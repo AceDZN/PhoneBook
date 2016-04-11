@@ -1,0 +1,44 @@
+{
+  "name": "PhoneBook",
+  "version": "1.0.0",
+  "description": "Firebase contact list",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/AceDZN/contacts_list.git"
+  },
+  "keywords": [
+    "firebase",
+    "contacts"
+  ],
+  "author": "Alex Sindalovsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AceDZN/contacts_list/issues"
+  },
+  "homepage": "https://github.com/AceDZN/contacts_list#readme",
+  "devDependencies": {
+    "browserify": "*",
+    "flux": "*",
+    "gulp": "*",
+    "reactify": "*",
+    "vinyl-source-stream": "*",
+    "object-assign": "*",
+    "gulp-server-livereload": "*",
+    "gulp-concat": "*",
+    "gulp-sass": "*",
+    "watchify": "*",
+    "gulp-util": "*",
+    "gulp-uglify":"*",
+    "gulp-cssnano":"*",
+    "gulp-rename":"*"
+
+  },
+  "dependencies": {
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1"
+  }
+}
