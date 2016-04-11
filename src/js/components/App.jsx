@@ -1,6 +1,8 @@
 var React = require('react');
 var AppActions = require('../actions/Actions');
-var AppStore = require('../stores/Store')
+var AppStore = require('../stores/Store');
+var AddContactForm = require('./AddContactForm');
+var ContactList = require('./ContactList');
 
 function getAppState(){
   return{
@@ -21,8 +23,13 @@ module.exports = React.createClass({
   },
   render: function(){
     return (
-      <div>
-        APP PLACEHOLDER
+      <div className="row">
+        <div className="col-sm-7">
+          <ContactList />
+        </div>
+        <div className="col-sm-5">
+          <AddContactForm />
+        </div>
       </div>
     )
   },

@@ -32,10 +32,33 @@ var sassBundler = watchify(
   })
 );
 
+function notify(error){
+  var message = 'In: ';
+  var title = 'Error: ';
+
+  if(error.description) {
+    title += error.description;
+  } else if (error.message) {
+    title += error.message;
+  }
+
+  if(error.filename) {
+    var file = error.filename.split('/');
+    message += file[file.length-1];
+  }
+
+  if(error.lineNumber) {
+    message += '\nOn Line: ' + error.lineNumber;
+  }
+
+  gutil.log('title:'+title);
+  gutil.log('message:'+message);
+}
 
 function bundle(){
   return bundler
     .bundle()
+    .on('error', notify)
     .pipe(source('main.js'))
     .pipe(gulp.dest('dist/js'))
 }
@@ -98,12 +121,16 @@ gulp.task('copy', ['build','sass','compress'],function(){
 gulp.task('serve', ['copy'], function(done) {
   gulp.src('src/css/*.*')
     .pipe(gulp.dest('dist/css'));
+  gulp.src('src/js/*.*')
+    .pipe(gulp.dest('dist/js'));
   gulp.src('dist')
     .pipe(server({
       livereload: {
         enable: true,
         filter: function(filePath, cb) {
           if(/main.js/.test(filePath)) {
+            cb(true)
+          } else if(/main.min.js/.test(filePath)) {
             cb(true)
           } else if(/style.css/.test(filePath)){
             cb(true)

@@ -1,3 +1,23 @@
 body{
+}
 
+.contact-list{
+  .panel-body{
+    padding:0;
+    ul.list-group{
+      margin:0;
+      li{
+        border-top-width:0;
+        border-left-width:0;
+        border-right-width:0;
+        border-bottom-width:2px;
+        &:last-child{
+          border-bottom-width:0;
+        }
+        dl{
+          margin:0;
+        }
+      }
+    }
+  }
 }
