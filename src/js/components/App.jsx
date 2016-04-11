@@ -6,7 +6,7 @@ var ContactList = require('./ContactList');
 
 function getAppState(){
   return{
-
+    contacts: AppStore.getContacts()
   }
 }
 
@@ -22,10 +22,11 @@ module.exports = React.createClass({
     AppStore.removeChangeListener(this._onChange);
   },
   render: function(){
+    console.log(this.state.contacts,"this.state.contacts");
     return (
       <div className="row">
         <div className="col-sm-7">
-          <ContactList />
+          <ContactList contacts={this.state.contacts}/>
         </div>
         <div className="col-sm-5">
           <AddContactForm />
@@ -34,7 +35,7 @@ module.exports = React.createClass({
     )
   },
   _onChange: function(){
-    this.state(getAppState());
+    this.setState(getAppState());
   }
 
 

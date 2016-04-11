@@ -6,9 +6,15 @@ var API = require('../utils/Api');
 
 var CHANGE_EVENT = 'change';
 
-var _items = [];
+var _contacts = [];
 
 var Store = assign({}, EventEmitter.prototype, {
+  saveContact: function(contact){
+    _contacts.push(contact);
+  },
+  getContacts: function(){
+    return _contacts;
+  },
   emitChange: function(){
     this.emit(CHANGE_EVENT);
   },
@@ -21,9 +27,14 @@ var Store = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(payload){
-  var action = payload.action;
-  switch(action.actionType){
 
+  var action = payload.action;
+
+  switch(action.actionType){
+    case AppConstants.SAVE_CONTACT:
+      Store.saveContact(action.contact);
+      Store.emit(CHANGE_EVENT);
+      break;
   }
   return true;
 
