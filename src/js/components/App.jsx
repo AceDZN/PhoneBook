@@ -1,4 +1,5 @@
 var React = require('react');
+var AceLogo = require('./AceLogo');
 var AppActions = require('../actions/Actions');
 var AppStore = require('../stores/Store');
 var AddContactForm = require('./AddContactForm');
@@ -24,12 +25,20 @@ module.exports = React.createClass({
   render: function(){
     console.log(this.state.contacts,"this.state.contacts");
     return (
-      <div className="row">
-        <div className="col-sm-7">
-          <ContactList contacts={this.state.contacts}/>
+      <div>
+        <div className="row">
+          <div className="col-sm-7">
+            <ContactList contacts={this.state.contacts}/>
+          </div>
+          <div className="col-sm-5">
+            <AddContactForm />
+          </div>
         </div>
-        <div className="col-sm-5">
-          <AddContactForm />
+        <div className="row">
+          <div className="col-xs-12 text-center">
+            <AceLogo />
+          </div>
+
         </div>
       </div>
     )

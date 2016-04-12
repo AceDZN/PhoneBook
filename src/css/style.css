@@ -3,11 +3,25 @@
   .contact-list .panel-body ul.list-group {
     margin: 0; }
     .contact-list .panel-body ul.list-group li {
+      padding: 5px;
       border-top-width: 0;
       border-left-width: 0;
       border-right-width: 0;
       border-bottom-width: 2px; }
       .contact-list .panel-body ul.list-group li:last-child {
         border-bottom-width: 0; }
-      .contact-list .panel-body ul.list-group li dl {
-        margin: 0; }
+  .contact-list .panel-body .media {
+    position: relative; }
+    .contact-list .panel-body .media .edit-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      opacity: 0; }
+    .contact-list .panel-body .media .edit-btn.delete {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: auto;
+      opacity: 0; }
+    .contact-list .panel-body .media:hover .edit-btn {
+      opacity: 1; }

@@ -7,6 +7,7 @@ body{
     ul.list-group{
       margin:0;
       li{
+        padding: 5px ;
         border-top-width:0;
         border-left-width:0;
         border-right-width:0;
@@ -14,9 +15,28 @@ body{
         &:last-child{
           border-bottom-width:0;
         }
-        dl{
-          margin:0;
-        }
+
+
+      }
+    }
+    .media{
+      position:relative;
+
+      .edit-btn{
+        position: absolute;
+        top:0;
+        right:0;
+        opacity:0;
+      }
+      .edit-btn.delete{
+        position: absolute;
+        top:0;
+        left:0;
+        right:auto;
+        opacity:0;
+      }
+      &:hover .edit-btn{
+        opacity: 1;
       }
     }
   }
