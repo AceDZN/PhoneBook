@@ -8,5 +8,12 @@ module.exports =  {
       actionType: AppConstants.SAVE_CONTACT,
       contact: contact
     })
+  },
+  getContacts: function(contacts){
+    console.log(contacts);
+    AppDispatcher.handleViewAction({
+      actionType: AppConstants.GET_CONTACTS,
+      contacts: contacts
+    })
   }
 }

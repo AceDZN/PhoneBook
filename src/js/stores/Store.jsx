@@ -1,8 +1,9 @@
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
+
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var AppConstants = require('../constants/AppConstants');
-var API = require('../utils/Api');
+var AppAPI = require('../utils/Api');
 
 var CHANGE_EVENT = 'change';
 
@@ -11,6 +12,9 @@ var _contacts = [];
 var Store = assign({}, EventEmitter.prototype, {
   saveContact: function(contact){
     _contacts.push(contact);
+  },
+  setContacts: function(contacts){
+    _contacts = contacts;
   },
   getContacts: function(){
     return _contacts;
@@ -33,6 +37,11 @@ AppDispatcher.register(function(payload){
   switch(action.actionType){
     case AppConstants.SAVE_CONTACT:
       Store.saveContact(action.contact);
+      AppAPI.saveContact(action.contact);
+      Store.emit(CHANGE_EVENT);
+      break;
+    case AppConstants.GET_CONTACTS:
+      Store.setContacts(action.contacts);
       Store.emit(CHANGE_EVENT);
       break;
   }
